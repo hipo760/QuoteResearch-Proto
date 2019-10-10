@@ -1,0 +1,31 @@
+syntax = "proto3";
+package QuoteResearch.Service.ScheduleService;
+import "Share/Type.proto";
+
+message EditQuoteScheduleRequest{
+  QuoteResearch.Service.Share.Type.QuoteSchedule Schedule =1;
+}
+
+message EditQuoteScheduleResponse{
+}
+
+message GetScheduleRequest{
+  string ScheduleID =1;
+  QuoteResearch.Service.Share.Type.Quote Quote =2;
+}
+
+message GetScheduleResponse{
+  QuoteResearch.Service.Share.Type.QuoteSchedule Schedule =1;
+}
+
+message GetQuoteScheduleListResponse{
+  repeated QuoteResearch.Service.Share.Type.QuoteSchedule Schedule =1;
+}
+
+service ScheduleService {
+  rpc AddSchedule(EditQuoteScheduleRequest) returns (EditQuoteScheduleResponse);
+  rpc RemoveSchedule(EditQuoteScheduleRequest) returns (EditQuoteScheduleResponse);
+  rpc UpdateSchedule(EditQuoteScheduleRequest) returns (EditQuoteScheduleResponse);
+  rpc GetSchedule(GetScheduleRequest) returns (GetScheduleResponse);
+  rpc GetScheduleList(QuoteResearch.Service.Share.Type.EmptyRequest) returns (GetQuoteScheduleListResponse);
+}

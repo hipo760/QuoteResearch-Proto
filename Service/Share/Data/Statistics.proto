@@ -1,0 +1,33 @@
+syntax = "proto3";
+package QuoteResearch.Service.Share.Data.Statistics;
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+
+message Center{
+    float ArithmeticMean = 1;
+    float GeometricMean = 2;
+    float HarmonicMean = 3;
+    float Median = 4;
+    float Mode = 5;
+}
+
+message Dispersion{
+    float Variance = 1;
+    float StandardDeviation = 2;
+    float CoefficientVariation = 3;
+    float Range = 4;
+    float InterquartileRange = 5;
+}
+
+message ShapeMoments{
+    float Skewness = 1;
+    float Kurtosis = 2;
+    float LMoments = 3;
+}
+
+message DescriptiveStatistics{
+    google.protobuf.Timestamp LocalTime = 1;
+    Center Center = 2;
+    Dispersion Dispersion = 3;
+    ShapeMoments ShapeMoments =4;
+}

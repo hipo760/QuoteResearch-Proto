@@ -1,0 +1,20 @@
+syntax = "proto3";
+package QuoteResearch.Service.OrderService;
+import "Share/Type.proto";
+
+message OrderRequest {
+  QuoteResearch.Service.Share.Type.Quote Quote =1;
+}
+
+message OrderResponse {
+}
+
+message MeltDownRequest {
+}
+
+service OrderService {
+  rpc CreateBearPosition (OrderRequest) returns (OrderResponse);
+  rpc CreateBullPosition (OrderRequest) returns (OrderResponse);
+  rpc CoverPosition (OrderRequest) returns (OrderResponse);
+  rpc MeltDown (MeltDownRequest) returns (OrderResponse);
+}

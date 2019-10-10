@@ -1,0 +1,14 @@
+syntax = "proto3";
+package QuoteResearch.Service.QuoteService;
+import "Share/Type.proto";
+import "google/protobuf/timestamp.proto";
+
+message GetQuoteListResponse{
+  int32 Result =1;
+  google.protobuf.Timestamp LastUpdateTime = 3;
+  repeated QuoteResearch.Service.Share.Type.Quote QuoteList =2;
+}
+
+service QuoteService {
+  rpc GetQuoteList(QuoteResearch.Service.Share.Type.EmptyRequest) returns (GetQuoteListResponse);
+}

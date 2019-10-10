@@ -1,0 +1,32 @@
+syntax = "proto3";
+package QuoteResearch.Service.Share.Type;
+
+message Quote{
+  string QuoteID =1;
+  string Exchange =2;
+  string Symbol =3;
+}
+
+message TimeOfDay{
+  int32 Hour =1;
+  int32 Minute =2;
+  int32 Second =3;
+}
+
+message Date{
+  int32 Year =1;
+  int32 Month =2;
+  int32 Day =3;
+}
+
+message QuoteSchedule{
+  string ScheduleID =1;
+  TimeOfDay StartTime =2;
+  TimeOfDay EndTime =3;
+  Quote Quote =4;
+  repeated string StrategyIDList =5;
+  int32 TimeZone =6;
+}
+
+message EmptyRequest{
+}

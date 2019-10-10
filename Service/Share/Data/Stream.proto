@@ -1,0 +1,26 @@
+syntax = "proto3";
+package QuoteResearch.Service.Share.Data.Stream;
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+
+message TickElement{
+    int32 DealQty = 1;
+    float DealPrice = 2;
+}
+
+message Tick{
+    int32 DealQty = 1;
+    float DealPrice = 2; 
+    google.protobuf.Timestamp LocalTime = 3;
+}
+
+message OHLC{
+    google.protobuf.FloatValue Open = 1;
+    google.protobuf.FloatValue High = 2;
+    google.protobuf.FloatValue Low = 3;
+    float Close = 4;
+    int32 Volume = 5;
+    int32 TicksCount = 6;
+    google.protobuf.Timestamp LocalTime = 7;
+    repeated TickElement TicksArr = 8;
+}

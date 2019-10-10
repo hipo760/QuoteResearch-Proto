@@ -1,0 +1,14 @@
+syntax = "proto3";
+package QuoteResearch.Service.StorageService;
+import "Share/Type.proto";
+import "Share/Data/Stream.proto";
+
+message GetQuoteHistoryDataRequest{
+  QuoteResearch.Service.Share.Type.Quote Quote =1;
+  QuoteResearch.Service.Share.Type.Date StartDate =2;
+  QuoteResearch.Service.Share.Type.Date EndDate =3;
+}
+
+service StorageService {
+  rpc GetQuoteHistoryData(GetQuoteHistoryDataRequest) returns (stream QuoteResearch.Service.Share.Data.Stream.OHLC);
+}

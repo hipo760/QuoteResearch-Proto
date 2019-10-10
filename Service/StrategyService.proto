@@ -1,0 +1,38 @@
+syntax = "proto3";
+package QuoteResearch.Service.StrategyService;
+import "Share/Type.proto";
+import "google/protobuf/timestamp.proto";
+
+message StrategyInfo{
+  string StrategyID =1;
+  string Info =2;
+}
+
+message GetStrategyInfoRequest {
+  string StrategyID =1;
+}
+
+message GetStrategyInfoResponse {
+  StrategyInfo StrategyInfo =1;
+}
+
+message GetStrategyListResponse{
+  int32 Result =1;
+  google.protobuf.Timestamp LastUpdateTime = 2;
+  repeated StrategyInfo StrategyInfo =3;
+}
+
+message GetQuoteStrategyPairRequest{
+  string QuoteID =1;
+}
+
+message GetQuoteStrategyPairResponse{
+  int32 Result =1;
+  repeated string StrategyIDList =3;
+}
+
+service StrategyService {
+  rpc GetStrategyInfo(GetStrategyInfoRequest) returns (GetStrategyInfoResponse);
+  rpc GetStrategyList(QuoteResearch.Service.Share.Type.EmptyRequest) returns (GetStrategyListResponse);
+  rpc GetQuoteStrategyPair (GetQuoteStrategyPairRequest) returns (GetQuoteStrategyPairResponse);
+}

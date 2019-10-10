@@ -1,0 +1,18 @@
+syntax = "proto3";
+package QuoteResearch.Service.SignalService;
+import "google/protobuf/timestamp.proto";
+
+message SignalActionRequest {
+  string QuoteID =1;
+  string StrategyID =2;
+}
+message SignalActionResponse {
+  int32 Result =1;
+  google.protobuf.Timestamp LastUpdateTime = 2;
+}
+
+service SignalService {
+  // Block and free signal.
+  rpc BlockSignal (SignalActionRequest) returns (SignalActionResponse);
+  rpc FreeSignal (SignalActionRequest) returns (SignalActionResponse);
+}

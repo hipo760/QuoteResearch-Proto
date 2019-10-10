@@ -1,0 +1,15 @@
+syntax = "proto3";
+package QuoteResearch.Service.CommandService;
+import "Share/Type.proto";
+
+message CommandServiceResponse{
+  int32 result =1;
+}
+
+service CommandService {
+  /* Quote service connection action. */
+  rpc Start(QuoteResearch.Service.Share.Type.EmptyRequest) returns (CommandServiceResponse);
+  rpc Stop(QuoteResearch.Service.Share.Type.EmptyRequest) returns (CommandServiceResponse);
+  rpc Restart(QuoteResearch.Service.Share.Type.EmptyRequest) returns (CommandServiceResponse);
+  rpc GetHealthStatus(QuoteResearch.Service.Share.Type.EmptyRequest) returns (CommandServiceResponse);
+}
