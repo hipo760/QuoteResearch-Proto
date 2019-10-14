@@ -11,5 +11,4 @@ service CommandService {
   rpc Start(QuoteResearch.Service.Share.Type.EmptyRequest) returns (CommandServiceResponse);
   rpc Stop(QuoteResearch.Service.Share.Type.EmptyRequest) returns (CommandServiceResponse);
   rpc Restart(QuoteResearch.Service.Share.Type.EmptyRequest) returns (CommandServiceResponse);
-  rpc GetHealthStatus(QuoteResearch.Service.Share.Type.EmptyRequest) returns (CommandServiceResponse);
 }

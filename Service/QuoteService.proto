@@ -5,8 +5,8 @@ import "google/protobuf/timestamp.proto";
 
 message GetQuoteListResponse{
   int32 Result =1;
-  google.protobuf.Timestamp LastUpdateTime = 3;
-  repeated QuoteResearch.Service.Share.Type.Quote QuoteList =2;
+  google.protobuf.Timestamp LastUpdateTime = 2;
+  repeated QuoteResearch.Service.Share.Type.Quote QuoteList =3;
 }
 
 service QuoteService {

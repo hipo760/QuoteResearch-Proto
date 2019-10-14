@@ -1,5 +1,6 @@
 syntax = "proto3";
 package QuoteResearch.Service.Share.Type;
+import "google/protobuf/timestamp.proto";
 
 message Quote{
   string QuoteID =1;
@@ -21,8 +22,8 @@ message Date{
 
 message QuoteSchedule{
   string ScheduleID =1;
-  TimeOfDay StartTime =2;
-  TimeOfDay EndTime =3;
+  google.protobuf.Timestamp StartTime =2;
+  google.protobuf.Timestamp EndTime =3;
   Quote Quote =4;
   repeated string StrategyIDList =5;
   int32 TimeZone =6;
