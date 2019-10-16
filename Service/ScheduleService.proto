@@ -1,6 +1,16 @@
 syntax = "proto3";
 package QuoteResearch.Service.ScheduleService;
+import "google/protobuf/timestamp.proto";
 import "Share/Type.proto";
+
+message EditHolidayRequest{
+  QuoteResearch.Service.Share.Type.Quote Quote =1;
+  QuoteResearch.Service.Share.Type.Date Date =2;
+}
+
+message EditHolidayResponse{
+  int32 Result =1;
+}
 
 message EditQuoteScheduleRequest{
   QuoteResearch.Service.Share.Type.QuoteSchedule Schedule =1;
@@ -19,13 +29,17 @@ message GetScheduleResponse{
 }
 
 message GetQuoteScheduleListResponse{
-  repeated QuoteResearch.Service.Share.Type.QuoteSchedule Schedule =1;
+  google.protobuf.Timestamp UpdateTime =1;
+  repeated QuoteResearch.Service.Share.Type.QuoteSchedule Schedule =2;
 }
 
 service ScheduleService {
+  rpc AddHoliday(EditHolidayRequest) returns (EditHolidayResponse);
+  rpc RemoveHoliday(EditHolidayRequest) returns (EditHolidayResponse);
   rpc AddSchedule(EditQuoteScheduleRequest) returns (EditQuoteScheduleResponse);
   rpc RemoveSchedule(EditQuoteScheduleRequest) returns (EditQuoteScheduleResponse);
   rpc UpdateSchedule(EditQuoteScheduleRequest) returns (EditQuoteScheduleResponse);
   rpc GetSchedule(GetScheduleRequest) returns (GetScheduleResponse);
+  rpc GetScheduleUpdateTime(QuoteResearch.Service.Share.Type.EmptyRequest) returns (google.protobuf.Timestamp);
   rpc GetScheduleList(QuoteResearch.Service.Share.Type.EmptyRequest) returns (GetQuoteScheduleListResponse);
 }
